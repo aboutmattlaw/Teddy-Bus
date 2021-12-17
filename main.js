@@ -24,6 +24,8 @@ function showBus(json) {
         visit.MonitoredVehicleJourney.MonitoredCall.Extensions.Distances.PresentableDistance
 
       let time = visit.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime
+      console.log(time)
+
       arrival.textContent = time
 
       line.textContent = visit.MonitoredVehicleJourney.PublishedLineName
