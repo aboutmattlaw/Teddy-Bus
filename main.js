@@ -8,29 +8,39 @@ function getBus(stopcode) {
 
 function showBus(json) {
   const main = document.querySelector('main')
-  main.innerHTML = ""
+
+  main.innerHTML = ''
 
   json.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(
     (visit) => {
-      const distance = document.createElement('h2')
+      const distance = document.createElement('h1')
       const arrival = document.createElement('h2')
+      const line = document.createElement('h3')
+      // let long = document.createElement('h3')
+      // let lat = document.createElement('h3')
+      const showMap = document.createElement('button')
 
       distance.textContent =
         visit.MonitoredVehicleJourney.MonitoredCall.Extensions.Distances.PresentableDistance
 
-      var time = visit.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime
-      // var newTime = Date(time)
-
+      let time = visit.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime
       arrival.textContent = time
+
+      line.textContent = visit.MonitoredVehicleJourney.PublishedLineName
+      showMap.textContent = "show map"
+   
+
+      long = visit.MonitoredVehicleJourney.VehicleLocation.Longitude
+      lat = visit.MonitoredVehicleJourney.VehicleLocation.Longitude
+      console.log(long)
+      console.log(lat)
 
 
       main.appendChild(distance)
       main.appendChild(arrival)
-
+      main.appendChild(line)
+      main.appendChild(showMap)
     },
   )
 }
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   getBus()
-// })
