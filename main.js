@@ -6,6 +6,8 @@ function getBus(stopcode) {
     .then((data) => showBus(data))
 }
 
+
+
 function showBus(json) {
   const main = document.querySelector('main')
 
@@ -18,7 +20,7 @@ function showBus(json) {
       const line = document.createElement('h3')
       // let long = document.createElement('h3')
       // let lat = document.createElement('h3')
-      const showMap = document.createElement('button')
+      const showMap = document.createElement('div')
 
       distance.textContent =
         visit.MonitoredVehicleJourney.MonitoredCall.Extensions.Distances.PresentableDistance
@@ -28,21 +30,33 @@ function showBus(json) {
 
       arrival.textContent = time
 
-      line.textContent = visit.MonitoredVehicleJourney.PublishedLineName
-      showMap.textContent = "show map"
-   
-
       long = visit.MonitoredVehicleJourney.VehicleLocation.Longitude
-      lat = visit.MonitoredVehicleJourney.VehicleLocation.Longitude
+      lat = visit.MonitoredVehicleJourney.VehicleLocation.Latitude
       console.log(long)
       console.log(lat)
+
+      line.textContent = visit.MonitoredVehicleJourney.PublishedLineName
+      showMap.innerHTML = `<iframe width="300" height="300" style="border:0" loading="lazy" allowfullscreen
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBV7ZDW5e0YM3KSa2ZUdN5Q_GRVb75x42Y&center=${lat},${long}&q=${lat},${long}&zoom=16"></iframe>
+          </div>`
+   
+
+ 
+
+
 
 
       main.appendChild(distance)
       main.appendChild(arrival)
       main.appendChild(line)
       main.appendChild(showMap)
+
+      
+
     },
   )
 }
+
+
+
 
