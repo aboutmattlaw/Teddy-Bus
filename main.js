@@ -36,8 +36,8 @@ function showBus(json) {
       console.log(lat)
 
       line.textContent = visit.MonitoredVehicleJourney.PublishedLineName
-      showMap.innerHTML = `<iframe width="300" height="300" style="border:0" loading="lazy" allowfullscreen
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBV7ZDW5e0YM3KSa2ZUdN5Q_GRVb75x42Y&center=${lat},${long}&q=${lat},${long}&zoom=16"></iframe>
+      showMap.innerHTML = `<div><iframe width="300" height="300" style="border:0" loading="lazy" allowfullscreen
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBSfos_W0NCqumcXdZwbb3p5vBA3xh06d8&center=${lat},${long}&q=${lat},${long}&zoom=16"></iframe>
           </div>`
    
 
