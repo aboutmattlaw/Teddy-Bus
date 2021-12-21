@@ -12,9 +12,13 @@ function showBus(json) {
   main.innerHTML = ''
   document.getElementById('clock').innerHTML = ''
 
+  nowObj = new Date()
   now = new Date().toLocaleTimeString()
   const currentTime = document.createElement('h1')
-  currentTime.textContent = now
+  currentTime.textContent = `It's currently ${now}`
+
+
+
 
   json.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(
     (visit) => {
@@ -28,7 +32,6 @@ function showBus(json) {
 
       let time = visit.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime
 
-      arrival.innerHTML = time
 
       long = visit.MonitoredVehicleJourney.VehicleLocation.Longitude
       lat = visit.MonitoredVehicleJourney.VehicleLocation.Latitude
@@ -39,6 +42,20 @@ function showBus(json) {
       showMap.innerHTML = `<div><iframe width="300" height="300" style="border:0" loading="lazy" allowfullscreen
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBSfos_W0NCqumcXdZwbb3p5vBA3xh06d8&center=${lat},${long}&q=${lat},${long}&zoom=16"></iframe>
           </div>`
+
+          function parseDate(time) {
+            return new Date(Date.parse(time));
+          }
+          
+          const timeObj  = parseDate(time);
+          timeObj.toLocaleTimeString()
+          console.log(timeObj)
+          const delta = timeObj - nowObj
+          
+          const minutesAway = ((delta/60000).toFixed(0)).replace('.',':');
+          console.log(minutesAway)
+
+          arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
 
 
       document.getElementById('clock').appendChild(currentTime)
