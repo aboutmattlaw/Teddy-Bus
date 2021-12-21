@@ -10,6 +10,11 @@ function showBus(json) {
   const main = document.querySelector('main')
 
   main.innerHTML = ''
+  document.getElementById('clock').innerHTML = ''
+
+  now = new Date().toLocaleTimeString()
+  const currentTime = document.createElement('h1')
+  currentTime.textContent = now
 
   json.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(
     (visit) => {
@@ -35,6 +40,8 @@ function showBus(json) {
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBSfos_W0NCqumcXdZwbb3p5vBA3xh06d8&center=${lat},${long}&q=${lat},${long}&zoom=16"></iframe>
           </div>`
 
+
+      document.getElementById('clock').appendChild(currentTime)
       main.appendChild(distance)
       main.appendChild(arrival)
       main.appendChild(line)
