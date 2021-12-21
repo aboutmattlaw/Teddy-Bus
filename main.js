@@ -55,7 +55,16 @@ function showBus(json) {
           const minutesAway = ((delta/60000).toFixed(0)).replace('.',':');
           console.log(minutesAway)
 
-          arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
+          if (minutesAway > 1) {
+            arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
+        } else {
+          arrival.innerHTML = `${minutesAway} minute away / ${timeObj.toLocaleTimeString()}`
+
+        }
+
+
+
+          // arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
 
 
       document.getElementById('clock').appendChild(currentTime)
