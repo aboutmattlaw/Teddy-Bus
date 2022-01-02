@@ -55,16 +55,20 @@ function showBus(json) {
           const minutesAway = ((delta/60000).toFixed(0)).replace('.',':');
           console.log(minutesAway)
 
-          if (minutesAway > 1) {
-            arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
-        } else {
-          arrival.innerHTML = `${minutesAway} minute away / ${timeObj.toLocaleTimeString()}`
-
-        }
 
 
 
-          // arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
+        if (minutesAway === false) {
+          arrival.innerHTML = `hard to say when it will arrive`
+
+      } else if (minutesAway > 1) {
+        arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
+      }
+      else {
+        arrival.innerHTML = `${minutesAway} minute away / ${timeObj.toLocaleTimeString()}`
+      }
+
+
 
 
       document.getElementById('clock').appendChild(currentTime)
