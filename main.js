@@ -17,9 +17,6 @@ function showBus(json) {
   const currentTime = document.createElement('h1')
   currentTime.textContent = `It's currently ${now}`
 
-
-
-
   json.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(
     (visit) => {
       const distance = document.createElement('h1')
@@ -32,7 +29,6 @@ function showBus(json) {
 
       let time = visit.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime
 
-
       long = visit.MonitoredVehicleJourney.VehicleLocation.Longitude
       lat = visit.MonitoredVehicleJourney.VehicleLocation.Latitude
       console.log(long)
@@ -43,33 +39,25 @@ function showBus(json) {
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBSfos_W0NCqumcXdZwbb3p5vBA3xh06d8&center=${lat},${long}&q=${lat},${long}&zoom=16"></iframe>
           </div>`
 
-          function parseDate(time) {
-            return new Date(Date.parse(time));
-          }
-          
-          const timeObj  = parseDate(time);
-          timeObj.toLocaleTimeString()
-          console.log(timeObj)
-          const delta = timeObj - nowObj
-          
-          const minutesAway = ((delta/60000).toFixed(0)).replace('.',':');
-          console.log(minutesAway)
+      function parseDate(time) {
+        return new Date(Date.parse(time))
+      }
 
+      const timeObj = parseDate(time)
+      timeObj.toLocaleTimeString()
+      console.log(timeObj)
+      const delta = timeObj - nowObj
 
+      const minutesAway = (delta / 60000).toFixed(0).replace('.', ':')
+      console.log(minutesAway)
 
-
-        if (minutesAway === false) {
-          arrival.innerHTML = `hard to say when it will arrive`
-
+      if (minutesAway === "NaN") {
+        arrival.innerHTML = `hard to say when it will arrive`
       } else if (minutesAway > 1) {
         arrival.innerHTML = `${minutesAway} minutes away / ${timeObj.toLocaleTimeString()}`
-      }
-      else {
+      } else {
         arrival.innerHTML = `${minutesAway} minute away / ${timeObj.toLocaleTimeString()}`
       }
-
-
-
 
       document.getElementById('clock').appendChild(currentTime)
       main.appendChild(distance)
