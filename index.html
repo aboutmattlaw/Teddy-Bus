@@ -6,14 +6,13 @@
     <meta name="description" content="" />
     <!-- <link rel="stylesheet" type="text/css" href="index.css" /> -->
 
-
-
-
-
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css"
+    />
     <style>
       :root {
-        --global-font-size: 15px;
+        --global-font-size: 20px;
         --global-line-height: 1.4em;
         --global-space: 10px;
         --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -46,14 +45,12 @@
     <title>Teddy Bus</title>
   </head>
   <body class="terminal">
-    <button class="btn" onclick="getBus(306069)">
-      9th St & 5th Ave --> B61 to school
-    </button>
-    <button class="btn" onclick="getBus(305677)">
-      9th St & 7th Ave --> B67/B69 to school
-    </button>
-    <div id="clock"></div>
+    <ul>
+      <li onclick="getBus(306069)">9th St & 5th Ave --> B61 to school</li>
+      <li onclick="getBus(305677)">9th St & 7th Ave --> B67/B69 to school</li>
+    </ul>
 
+    <div id="clock"></div>
 
     <main></main>
     <script src="main.js"></script>
