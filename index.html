@@ -4,7 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="index.css" /> -->
+
+
+
+
+
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
+    <style>
+      :root {
+        --global-font-size: 15px;
+        --global-line-height: 1.4em;
+        --global-space: 10px;
+        --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+          serif;
+        --mono-font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+          serif;
+        --background-color: #222225;
+        --page-width: 60em;
+        --font-color: rgb(6, 240, 6);
+        --invert-font-color: #222225;
+        --secondary-color: #a3abba;
+        --tertiary-color: #a3abba;
+        --primary-color: #62c4ff;
+        --error-color: #ff3c74;
+        --progress-bar-background: #3f3f44;
+        --progress-bar-fill: #62c4ff;
+        --code-bg-color: #3f3f44;
+        --input-style: solid;
+        --display-h1-decoration: none;
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,11 +45,11 @@
     />
     <title>Teddy Bus</title>
   </head>
-  <body>
-    <button onclick="getBus(306069)">
+  <body class="terminal">
+    <button class="btn" onclick="getBus(306069)">
       9th St & 5th Ave --> B61 to school
     </button>
-    <button onclick="getBus(305677)">
+    <button class="btn" onclick="getBus(305677)">
       9th St & 7th Ave --> B67/B69 to school
     </button>
     <div id="clock"></div>
